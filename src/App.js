@@ -7,6 +7,7 @@ import { PrivateRoute } from "./components/PrivateRoute";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login.js";
 import NotFoundPage from "./pages/404/404";
+import Configuraciones from "./pages/Configuraciones/";
 
 import { UserProvider } from "./context/user/UserContext";
 
@@ -17,6 +18,7 @@ const App = () => {
         <GlobalStyles />
         <Switch>
           <PrivateRoute exact path="/" component={Dashboard} />
+          <PrivateRoute path="/configuracion" component={Configuraciones} />
           <Route path="/login" component={Login} />
           <PrivateRoute path="*" component={NotFoundPage} />
         </Switch>
