@@ -20,30 +20,40 @@ import {
   User as UserIcon,
   UserPlus as UserPlusIcon,
   Users as UsersIcon,
+  Search as SearchIcon,
+  Plus as PlusIcon,
 } from "react-feather";
 import NavItem from "./NavItem";
 import { UserContext } from "../../../context/user/UserContext";
 
-const items = [
+const itemsTop = [
   {
     href: "/",
     icon: BarChartIcon,
     title: "Dashboard",
   },
   {
-    href: "/app/account",
+    href: "/ingreso",
+    icon: PlusIcon,
+    title: "Ingreso",
+  },
+  {
+    href: "/buscar",
+    icon: SearchIcon,
+    title: "Buscar",
+  },
+];
+
+const itemsBottom = [
+  {
+    href: "/configuracion",
+    icon: SettingsIcon,
+    title: "Configuraciones",
+  },
+  {
+    href: "/perfil",
     icon: UserIcon,
-    title: "Account",
-  },
-  {
-    href: "/app/settings",
-    icon: SettingsIcon,
-    title: "Settings",
-  },
-  {
-    href: "/app/codigos",
-    icon: SettingsIcon,
-    title: "Codigos",
+    title: "Perfil de Cuenta",
   },
 ];
 
@@ -89,7 +99,21 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       <Divider />
       <Box p={2}>
         <List>
-          {items.map((item) => (
+          {itemsTop.map((item) => (
+            <NavItem
+              href={item.href}
+              key={item.title}
+              title={item.title}
+              icon={item.icon}
+            />
+          ))}
+        </List>
+      </Box>
+      <div style={{ flex: 1 }}></div>
+      <Divider />
+      <Box p={2}>
+        <List>
+          {itemsBottom.map((item) => (
             <NavItem
               href={item.href}
               key={item.title}
