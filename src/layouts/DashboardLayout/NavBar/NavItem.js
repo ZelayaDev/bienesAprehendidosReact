@@ -50,6 +50,7 @@ const NavItem = ({ className, href, icon: Icon, title, ...rest }) => {
         className={classes.button}
         component={RouterLink}
         to={href}
+        exact
       >
         {Icon && <Icon className={classes.icon} size="20" />}
         <span className={classes.title}>{title}</span>
