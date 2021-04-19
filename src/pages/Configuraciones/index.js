@@ -1,21 +1,28 @@
 import React from "react";
-import DashboardLayout from "../../layouts/DashboardLayout/";
 import { Route } from "react-router-dom";
-import VerticalTab from "../../components/VerticalTab/VerticalTab";
+
+//Plantilla de paginas
+
+import DashboardLayout from "../../layouts/DashboardLayout/";
+import {
+  PestanasVertical,
+  PestanasHorizontal,
+} from "../../components/Pestanas/Pestanas";
+import Container from "../../components/Container/Container";
 
 //ruta de codigos componentes
 
-import Usuario from "./Usuario";
-import Regiones from "./Region";
-import Zonas from "./Zonas";
-import Provincias from "./Provincias";
-import Bases from "./Bases";
-import Medios from "./Medios";
-import Marcas from "./Marcas";
-import Modelos from "./Modelos";
+import Usuario from "./usuarios/Usuario";
+import Regiones from "./regiones/Region";
+import Zonas from "./zonas/Zonas";
+import Provincias from "./provincias/Provincias";
+import Bases from "./bases/Bases";
+import Medios from "./medios/Medios";
+import Marcas from "./marcas/Marcas";
+import Modelos from "./modelos/Modelos";
 
 function Configuraciones() {
-  const verticalTabItems = [
+  const rutasItems = [
     {
       label: "Usuarios",
       ruta: "/configuracion",
@@ -52,16 +59,19 @@ function Configuraciones() {
 
   return (
     <DashboardLayout title="Configuraciones">
-      <VerticalTab items={verticalTabItems}>
-        <Route exact path="/configuracion" component={Usuario} />
-        <Route path="/configuracion/regiones" component={Regiones} />
-        <Route path="/configuracion/zonas" component={Zonas} />
-        <Route path="/configuracion/provincias" component={Provincias} />
-        <Route path="/configuracion/bases" component={Bases} />
-        <Route path="/configuracion/medios" component={Medios} />
-        <Route path="/configuracion/marcas" component={Marcas} />
-        <Route path="/configuracion/modelos" component={Modelos} />
-      </VerticalTab>
+      <PestanasHorizontal items={rutasItems} />
+      <PestanasVertical items={rutasItems}>
+        <Container>
+          <Route path="/configuracion" component={Usuario} />
+          <Route path="/configuracion/regiones" component={Regiones} />
+          <Route path="/configuracion/zonas" component={Zonas} />
+          <Route path="/configuracion/provincias" component={Provincias} />
+          <Route path="/configuracion/bases" component={Bases} />
+          <Route path="/configuracion/medios" component={Medios} />
+          <Route path="/configuracion/marcas" component={Marcas} />
+          <Route path="/configuracion/modelos" component={Modelos} />
+        </Container>
+      </PestanasVertical>
     </DashboardLayout>
   );
 }
