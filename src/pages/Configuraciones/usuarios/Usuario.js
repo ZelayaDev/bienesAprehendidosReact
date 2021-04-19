@@ -7,41 +7,6 @@ import Grid from "./Grid";
 import Nuevo from "./Nuevo";
 import Editar from "./Editar";
 
-const rutasItems = [
-  {
-    label: "Usuarios",
-    ruta: "/configuracion",
-  },
-  {
-    label: "Regiones",
-    ruta: "/configuracion/regiones",
-  },
-  {
-    label: "Zonas",
-    ruta: "/configuracion/zonas",
-  },
-  {
-    label: "Provincias",
-    ruta: "/configuracion/provincias",
-  },
-  {
-    label: "Bases",
-    ruta: "/configuracion/bases",
-  },
-  {
-    label: "Medios",
-    ruta: "/configuracion/medios",
-  },
-  {
-    label: "Marcas",
-    ruta: "/configuracion/marcas",
-  },
-  {
-    label: "Modelos",
-    ruta: "/configuracion/modelos",
-  },
-];
-
 function Usuario() {
   return (
     <>
