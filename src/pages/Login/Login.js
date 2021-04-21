@@ -25,6 +25,7 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useContext(UserContext);
   const history = useHistory();
+  const id_app = parseInt(process.env.REACT_APP_ID_APP);
   const handleOnChangeCedula = (e) => setCedula(e.target.value);
   const handleOnChangePassword = (e) => setPassword(e.target.value);
   const handleOnSubmit = async (e) => {
@@ -38,15 +39,14 @@ function Login() {
     try {
       const query = await loginUser(Cedula, Password);
       if (query.accessToken) {
-        const user = await getUserData(query.accessToken, 2);
-        console.log(user);
-        if (user[0].id_app === 2 && user[0].estado === 1) {
+        const user = await getUserData(query.accessToken, id_app);
+        if (user[0]?.id_app === id_app && user[0]?.estado === 1) {
           localStorage.setItem("token", query.accessToken);
           setUser(user[0]);
           history.push("/");
         } else {
           errorToast(
-            "Usuario no tiene acceso a esta aplicacion, contacte al administrador."
+            "Usuario no tiene acceso a esta aplicacion, contacte al administrador.",
           );
         }
       } else {

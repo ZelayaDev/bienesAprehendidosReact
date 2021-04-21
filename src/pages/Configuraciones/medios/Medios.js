@@ -13,9 +13,9 @@ function Medios() {
       {/* Grid */}
       <Route exact path="/configuracion/medios" component={Grid} />
       {/* nuevo  */}
-      <Route path="/configuracion/medios" component={Nuevo} />
+      <Route path="/configuracion/medios/nuevo" component={Nuevo} />
       {/* modificar */}
-      <Route path="/configuracion/medios/:id" component={Editar} />
+      <Route path="/configuracion/medios/editar/:id" component={Editar} />
     </>
   );
 }

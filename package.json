@@ -23,6 +23,7 @@
     "react-feather": "^2.0.9",
     "react-helmet": "^6.1.0",
     "react-perfect-scrollbar": "^1.5.8",
+    "react-query": "^3.13.11",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "react-toastify": "^7.0.3",
