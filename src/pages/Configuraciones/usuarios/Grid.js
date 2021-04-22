@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 
 // plantillas
 
@@ -10,45 +9,27 @@ import Container from "../../../components/Container/Container";
 //componentes
 
 import DataTable from "../../../components/DataTable/databable";
-import BackdropSpinner from "../../../components/BackDrop/backDrop";
 
-function Grid() {
-  //local state
-
-  const [rows, setRows] = useState({});
-
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(50);
-  const [atrib, setAtrib] = useState("cedula");
-  const [order, setOrder] = useState("desc");
-
-  //plantillas de columnas
-
-  const columns = [
-    { tittle: "Cedula", atributo: "cedula" },
-    { tittle: "Nombre", atributo: "nombre" },
-    { tittle: "Permiso", atributo: "permiso" },
-  ];
-
-  // funciones
-
-  const handleChangePage = (page) => setPage(page + 1);
-  const handleChangeLimit = (limit) => setLimit(limit);
-  const handleChangeAtrib = (atrib) => setAtrib(atrib);
-  const handleChangeOrder = (order) => setOrder(order);
-
-  //destructuracion de los datos de la fuente
-
-  const { results } = rows;
-  const { total } = rows;
-
+function Grid({
+  page,
+  limit,
+  atrib,
+  order,
+  columns,
+  total,
+  handleChangePage,
+  handleChangeLimit,
+  handleChangeAtrib,
+  handleChangeOrder,
+  titulo,
+  descripcion,
+  type,
+  children,
+}) {
   return (
     <>
-      <TituloDescripcion
-        titulo="Usuarios"
-        descripcion="Pantalla de modificacion y creacion de nuevo usuarios."
-      />
-      <Toolbar type="usuarios" />
+      <TituloDescripcion titulo={titulo} descripcion={descripcion} />
+      <Toolbar type={type} />
       <Container padding={10}>
         <DataTable
           columns={columns}
@@ -61,7 +42,9 @@ function Grid() {
           order={order}
           handleChangeAtrib={handleChangeAtrib}
           handleChangeOrder={handleChangeOrder}
-        ></DataTable>
+        >
+          {children}
+        </DataTable>
       </Container>
     </>
   );

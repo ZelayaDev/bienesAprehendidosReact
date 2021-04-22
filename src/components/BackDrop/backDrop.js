@@ -12,7 +12,7 @@ const BackdropSpinner = ({ isLoading }) => {
   const classes = useStyles();
 
   return (
-    <Backdrop className={classes.backdrop} open={!isLoading}>
+    <Backdrop className={classes.backdrop} open={isLoading}>
       <CircularProgress color="inherit" />
     </Backdrop>
   );

@@ -48,7 +48,7 @@ function DataTable({
           <TableRow>
             {columns.map((column) => {
               return (
-                <TableCell align="center" key={column.tittle}>
+                <TableCell align="left" key={column.tittle}>
                   <TableSortLabel
                     active={atrib === column.atributo ? true : false}
                     direction={order}
