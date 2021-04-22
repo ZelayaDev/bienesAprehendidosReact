@@ -63,7 +63,7 @@ function Login() {
 
   return (
     <Grid container component="main" className={classes.root}>
-      <BackdropSpinner isLoading={!isLoading} />
+      <BackdropSpinner isLoading={isLoading} />
       {localStorage.token && <Redirect to="/" />}
       <Helmet title="Iniciar sesión" />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
