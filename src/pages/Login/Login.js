@@ -38,8 +38,10 @@ function Login() {
 
     try {
       const query = await loginUser(Cedula, Password);
+      console.log(query);
       if (query.accessToken) {
         const user = await getUserData(query.accessToken, id_app);
+        console.log(user);
         if (user[0]?.id_app === id_app && user[0]?.estado === 1) {
           localStorage.setItem("token", query.accessToken);
           setUser(user[0]);
