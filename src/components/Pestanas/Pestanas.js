@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) => ({
     borderRight: `1px solid ${theme.palette.divider}`,
   },
   tabsColorVertical: {
-    borderRight: `3px solid ${theme.palette.primary.main}`,
+    borderRight: `1px solid ${theme.palette.primary.main}`,
     transition: "all 200ms ease-out",
   },
   tabsColorHorizontal: {
-    borderBottom: `3px solid ${theme.palette.primary.main}`,
+    borderBottom: `1px solid ${theme.palette.primary.main}`,
     transition: "all 200ms ease-in-out",
   },
 }));
@@ -49,7 +49,9 @@ export const PestanasVertical = ({ children, items }) => {
             style={{ marginRight: "2rem" }}
             onClick={() => history.push(item.ruta)}
             className={
-              location.pathname === item.ruta ? classes.tabsColorVertical : ""
+              location.pathname.split("/")[2] === item.ruta.split("/")[2]
+                ? classes.tabsColorVertical
+                : ""
             }
           />
         ))}
@@ -78,7 +80,9 @@ export const PestanasHorizontal = ({ items }) => {
             label={item.label}
             onClick={() => history.push(item.ruta)}
             className={
-              location.pathname === item.ruta ? classes.tabsColorHorizontal : ""
+              location.pathname.split("/")[2] === item.ruta.split("/")[2]
+                ? classes.tabsColorHorizontal
+                : ""
             }
           />
         ))}

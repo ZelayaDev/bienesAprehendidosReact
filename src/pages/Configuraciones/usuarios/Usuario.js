@@ -6,6 +6,7 @@ import { TableRow, TableCell, Chip } from "@material-ui/core";
 // plantilla de grud
 
 import Grid from "./Grid";
+import RHH from "./RHH";
 import Editar from "./Editar";
 import BackdropSpinner from "../../../components/BackDrop/backDrop";
 
@@ -29,6 +30,7 @@ function Usuario() {
     { tittle: "Permiso", atributo: "permiso" },
   ];
   const columnsUsuariosNot = [
+    { tittle: "Acción", atributo: "cedula" },
     { tittle: "Cedula", atributo: "cedula" },
     { tittle: "Nombre", atributo: "nombre" },
     { tittle: "Dirección", atributo: "direccion" },
@@ -65,7 +67,7 @@ function Usuario() {
 
   return (
     <>
-      {/* Grid */}
+      {/* usuarios del sistema */}
       <Route
         exact
         path="/configuracion"
@@ -87,6 +89,7 @@ function Usuario() {
               titulo="Usuarios"
               descripcion="Pantalla usuarios para la aplicacion de bienes aprendidos"
               type="usuarios"
+              label="Matricular"
               {...props}
             >
               {dataUsuarios.results.map((row, index) => (
@@ -101,7 +104,9 @@ function Usuario() {
                       }
                     />
                   </TableCell>
-                  <TableCell align="left">{`${row.nombre} ${row.apellido}`}</TableCell>
+                  <TableCell align="left">{`${row.nombre.split(" ")[0]} ${
+                    row.apellido.split(" ")[0]
+                  }`}</TableCell>
                   <TableCell align="left">{row.permiso}</TableCell>
                 </TableRow>
               ))}
@@ -109,7 +114,7 @@ function Usuario() {
           )
         }
       />
-      {/* nuevo  */}
+      {/* usuarios no matriculados  */}
       <Route
         path="/configuracion/nuevo"
         render={(props) =>
@@ -129,15 +134,22 @@ function Usuario() {
               handleChangeOrder={handleChangeOrder}
               titulo="Usuarios no matriculados"
               descripcion="Pantalla de matricula de usuarios para bienes aprendidos."
-              type="usuarios"
+              type="usuariosNot"
+              label="Agregar desde RHH"
+              atras={{
+                donde: "/configuracion",
+              }}
               {...props}
             >
               {dataUsuariosNot.results.map((row, index) => (
                 <TableRow key={index}>
                   <TableCell align="left">
-                    <Chip color="primary" label={row.cedula} clickable />
+                    <Chip color="primary" label="Matricular" clickable />
                   </TableCell>
-                  <TableCell align="left">{`${row.nombre} ${row.apellido}`}</TableCell>
+                  <TableCell align="left">{row.cedula}</TableCell>
+                  <TableCell align="left">{`${row.nombre.split(" ")[0]} ${
+                    row.apellido.split(" ")[0]
+                  }`}</TableCell>
                   <TableCell align="left">{row.direccion}</TableCell>
                 </TableRow>
               ))}
@@ -145,6 +157,8 @@ function Usuario() {
           )
         }
       />
+      {/* pagina de matricula de recursos humanos */}
+      <Route path="/configuracion/rhh" render={(props) => <RHH />} />
       {/* modificar */}
       <Route path="/configuracion/editar/:id" component={Editar} />
     </>

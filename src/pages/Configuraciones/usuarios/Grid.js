@@ -25,11 +25,13 @@ function Grid({
   descripcion,
   type,
   children,
+  label,
+  atras,
 }) {
   return (
     <>
       <TituloDescripcion titulo={titulo} descripcion={descripcion} />
-      <Toolbar type={type} />
+      <Toolbar type={type} label={label} atras={atras} />
       <Container padding={10}>
         <DataTable
           columns={columns}
