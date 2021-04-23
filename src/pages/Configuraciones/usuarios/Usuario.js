@@ -15,7 +15,7 @@ import BackdropSpinner from "../../../components/BackDrop/backDrop";
 import {
   getGridUsuarios,
   getGridUsuariosNoMatriculados,
-} from "../../../functions/fetch/fetch";
+} from "../../../functions/fetch/configuracion/usuarios/consultas";
 
 function Usuario() {
   const history = useHistory();
@@ -47,7 +47,7 @@ function Usuario() {
     refetch: refetchUsuarios,
   } = useQuery(
     ["Usuarios", page, limit, atrib, order],
-    () => getGridUsuarios(page, limit, atrib, order),
+    () => getGridUsuarios(page, limit, atrib, order, history),
     {
       staleTime: 180000,
     },
@@ -59,7 +59,7 @@ function Usuario() {
     refetch: refetchUsuariosNot,
   } = useQuery(
     ["UsuariosNoMatriculados", page, limit, atrib, order],
-    () => getGridUsuariosNoMatriculados(page, limit, atrib, order),
+    () => getGridUsuariosNoMatriculados(page, limit, atrib, order, history),
     {
       staleTime: 180000,
     },
@@ -158,7 +158,12 @@ function Usuario() {
         }
       />
       {/* pagina de matricula de recursos humanos */}
-      <Route path="/configuracion/rhh" render={(props) => <RHH />} />
+      <Route
+        path="/configuracion/rhh"
+        render={(props) => (
+          <RHH refetchUsuariosNot={refetchUsuariosNot} {...props} />
+        )}
+      />
       {/* modificar */}
       <Route path="/configuracion/editar/:id" component={Editar} />
     </>

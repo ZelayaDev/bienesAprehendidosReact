@@ -13,7 +13,7 @@ import { Helmet } from "react-helmet";
 import styles from "./styles";
 import BackdropSpinner from "../../components/BackDrop/backDrop";
 import { errorToast, msgWarn } from "../../functions/utils/utils";
-import { loginUser, getUserData } from "../../functions/fetch/fetch";
+import { loginUser, getUserData } from "../../functions/fetch/login/consultas";
 import { UserContext } from "../../context/user/UserContext";
 import logo from "../../assets/escudo_actual.png";
 
@@ -38,12 +38,10 @@ function Login() {
 
     try {
       const query = await loginUser(Cedula, Password);
-      console.log(query);
       if (query.accessToken) {
-        const user = await getUserData(query.accessToken, id_app);
-        console.log(user);
+        localStorage.setItem("token", query.accessToken);
+        const user = await getUserData(id_app, history);
         if (user[0]?.id_app === id_app && user[0]?.estado === 1) {
-          localStorage.setItem("token", query.accessToken);
           setUser(user[0]);
           history.push("/");
         } else {
@@ -52,7 +50,7 @@ function Login() {
           );
         }
       } else {
-        errorToast(query);
+        errorToast("SERVER ERROR");
       }
     } catch (error) {
       msgWarn(`ERROR: ${error}`);

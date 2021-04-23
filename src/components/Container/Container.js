@@ -1,6 +1,6 @@
 import React from "react";
 
-function Container({ children, padding = 0 }) {
+function Container({ children, padding = 0, ...otherProps }) {
   return (
     <div
       style={{
@@ -10,6 +10,7 @@ function Container({ children, padding = 0 }) {
         paddingRight: padding + 8,
         overflow: "auto",
       }}
+      {...otherProps}
     >
       {children}
     </div>
