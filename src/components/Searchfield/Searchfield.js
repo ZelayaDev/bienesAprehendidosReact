@@ -2,6 +2,7 @@ import React from "react";
 import { InputBase } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
+import { Card, CardContent } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -42,9 +43,55 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  card: {
+    [theme.breakpoints.up("sm")]: {
+      width: "39ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+    position: "absolute",
+    overflow: "auto",
+    zIndex: "1",
+    top: "100%",
+    left: 0,
+  },
+  cardContent: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "column",
+    alignItem: "center",
+    paddingTop: "1rem",
+    paddingBottom: "1rem",
+    maxHeight: "250px",
+    overflow: "auto",
+  },
+  card: {
+    [theme.breakpoints.up("sm")]: {
+      width: "39ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+    position: "absolute",
+    overflow: "auto",
+    zIndex: "1",
+    top: "100%",
+    left: 0,
+  },
+  cardContent: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "column",
+    alignItem: "center",
+    paddingTop: "1rem",
+    paddingBottom: "1rem",
+    maxHeight: "280px",
+    overflow: "auto",
+  },
 }));
 
-function Searchfield() {
+export const Searchfield = ({ ...otherProps }) => {
   const classes = useStyles();
   return (
     <div className={classes.search}>
@@ -52,15 +99,23 @@ function Searchfield() {
         <SearchIcon />
       </div>
       <InputBase
-        placeholder="Filtrar dentro de estos x elementos..."
+        placeholder="Buscar ..."
         classes={{
           root: classes.inputRoot,
           input: classes.inputInput,
         }}
-        inputProps={{ "aria-label": "Filtrar" }}
+        {...otherProps}
       />
     </div>
   );
-}
+};
 
-export default Searchfield;
+export const ContentBox = ({ children }) => {
+  const classes = useStyles();
+  return <Card className={classes.card}>{children}</Card>;
+};
+
+export const ContentCard = ({ children }) => {
+  const classes = useStyles();
+  return <CardContent className={classes.cardContent}>{children}</CardContent>;
+};

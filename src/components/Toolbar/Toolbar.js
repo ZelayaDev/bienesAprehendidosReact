@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import CustomButton from "../CustomButton/CustomButton";
-import Searchfield from "../Searchfield/Searchfield";
+import { Searchfield } from "../Searchfield/Searchfield";
 
 const Toolbar = ({ type, label = "Nuevo", atras = {} }) => {
   const history = useHistory();
