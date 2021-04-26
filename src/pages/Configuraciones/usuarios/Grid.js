@@ -9,6 +9,13 @@ import Container from "../../../components/Container/Container";
 //componentes
 
 import DataTable from "../../../components/DataTable/databable";
+import {
+  Searchfield,
+  ContentBox,
+  ContentCard,
+} from "../../../components/Searchfield/Searchfield";
+
+import { Button } from "@material-ui/core";
 
 function Grid({
   page,
@@ -27,11 +34,26 @@ function Grid({
   children,
   label,
   atras,
+  onChangeSearch,
+  searchField,
+  onEnterSearch,
 }) {
   return (
     <>
       <TituloDescripcion titulo={titulo} descripcion={descripcion} />
-      <Toolbar type={type} label={label} atras={atras} />
+      <Toolbar type={type} label={label} atras={atras}>
+        <Searchfield
+          onChange={(e) => {
+            onChangeSearch(e);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onEnterSearch();
+            }
+          }}
+          value={searchField}
+        />
+      </Toolbar>
       <Container padding={10}>
         <DataTable
           columns={columns}

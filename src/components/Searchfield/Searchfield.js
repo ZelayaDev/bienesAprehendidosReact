@@ -99,7 +99,7 @@ export const Searchfield = ({ ...otherProps }) => {
         <SearchIcon />
       </div>
       <InputBase
-        placeholder="Buscar ..."
+        placeholder="Presione Enter para buscar ..."
         classes={{
           root: classes.inputRoot,
           input: classes.inputInput,

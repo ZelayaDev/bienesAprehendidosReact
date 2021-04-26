@@ -14,3 +14,9 @@ export const urlDireccionesAuthDB = `${process.env.REACT_APP_AUTH_SERVER}/api/di
 export const urlDepartamentosByDirAuthDB = `${process.env.REACT_APP_AUTH_SERVER}/api/departamentos/ByIdDireccion`;
 
 export const urlRegistarAuthDB = `${process.env.REACT_APP_AUTH_SERVER}/api/auth/register`;
+
+export const urlMatriculaAuthDB = `${process.env.REACT_APP_AUTH_SERVER}/api/auth/matricula`;
+
+export const urlUsuarioDetails = `${process.env.REACT_APP_AUTH_SERVER}/api/auth/permisos`;
+
+export const urlPasswordReset = `${process.env.REACT_APP_AUTH_SERVER}/api/auth/reset`;
