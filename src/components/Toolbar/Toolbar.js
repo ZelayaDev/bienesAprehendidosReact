@@ -2,9 +2,8 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import CustomButton from "../CustomButton/CustomButton";
-import { Searchfield } from "../Searchfield/Searchfield";
 
-const Toolbar = ({ type, label = "Nuevo", atras = {} }) => {
+const Toolbar = ({ type, label = "Nuevo", atras = {}, children }) => {
   const history = useHistory();
 
   const push = (type) => {
@@ -50,7 +49,7 @@ const Toolbar = ({ type, label = "Nuevo", atras = {} }) => {
       </Cajas>
       <Cajas>
         {/* derecha */}
-        <Searchfield />
+        {children}
       </Cajas>
     </Grid>
   );

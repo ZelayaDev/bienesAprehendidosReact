@@ -30,7 +30,7 @@ function NotFoundPage() {
       >
         <Container maxWidth="md">
           <Typography align="center" color="textPrimary" variant="h1">
-            404: Esta página no existe.
+            Error 404: Esta página no existe.
           </Typography>
           <Typography align="center" color="textPrimary" variant="subtitle2">
             Intentaste alguna ruta con equivocada o viniste aquí por error. Sea
