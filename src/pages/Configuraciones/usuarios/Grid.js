@@ -9,13 +9,7 @@ import Container from "../../../components/Container/Container";
 //componentes
 
 import DataTable from "../../../components/DataTable/databable";
-import {
-  Searchfield,
-  ContentBox,
-  ContentCard,
-} from "../../../components/Searchfield/Searchfield";
-
-import { Button } from "@material-ui/core";
+import { Searchfield } from "../../../components/Searchfield/Searchfield";
 
 function Grid({
   page,

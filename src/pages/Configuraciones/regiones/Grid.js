@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 
 // plantillas
 
@@ -10,45 +9,45 @@ import Container from "../../../components/Container/Container";
 //componentes
 
 import DataTable from "../../../components/DataTable/databable";
-import BackdropSpinner from "../../../components/BackDrop/backDrop";
+import { Searchfield } from "../../../components/Searchfield/Searchfield";
 
-function Grid() {
-  //local state
-
-  const [rows, setRows] = useState({});
-
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(50);
-  const [atrib, setAtrib] = useState("Id_Region_Aeronaval");
-  const [order, setOrder] = useState("desc");
-
-  //plantillas de columnas
-
-  const columns = [
-    { tittle: "Region Ref", atributo: "Id_Region_Aeronaval" },
-    { tittle: "Nombre", atributo: "Nombre_Region" },
-    { tittle: "Estatus", atributo: "Estatus_Region" },
-  ];
-
-  // funciones
-
-  const handleChangePage = (page) => setPage(page + 1);
-  const handleChangeLimit = (limit) => setLimit(limit);
-  const handleChangeAtrib = (atrib) => setAtrib(atrib);
-  const handleChangeOrder = (order) => setOrder(order);
-
-  //destructuracion de los datos de la fuente
-
-  const { results } = rows;
-  const { total } = rows;
-
+function Grid({
+  page,
+  limit,
+  atrib,
+  order,
+  columns,
+  total,
+  handleChangePage,
+  handleChangeLimit,
+  handleChangeAtrib,
+  handleChangeOrder,
+  titulo,
+  descripcion,
+  type,
+  children,
+  label,
+  atras,
+  onChangeSearch,
+  searchField,
+  onEnterSearch,
+}) {
   return (
-    <div>
-      <TituloDescripcion
-        titulo="Regiones"
-        descripcion="Pantalla de modificacion y creacion de nuevo regiones."
-      />
-      <Toolbar type="regiones" />
+    <>
+      <TituloDescripcion titulo={titulo} descripcion={descripcion} />
+      <Toolbar type={type} label={label} atras={atras}>
+        <Searchfield
+          onChange={(e) => {
+            onChangeSearch(e);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onEnterSearch();
+            }
+          }}
+          value={searchField}
+        />
+      </Toolbar>
       <Container padding={10}>
         <DataTable
           columns={columns}
@@ -61,9 +60,11 @@ function Grid() {
           order={order}
           handleChangeAtrib={handleChangeAtrib}
           handleChangeOrder={handleChangeOrder}
-        ></DataTable>
+        >
+          {children}
+        </DataTable>
       </Container>
-    </div>
+    </>
   );
 }
 
