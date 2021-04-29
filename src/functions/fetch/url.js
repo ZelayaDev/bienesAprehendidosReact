@@ -20,3 +20,7 @@ export const urlMatriculaAuthDB = `${process.env.REACT_APP_AUTH_SERVER}/api/auth
 export const urlUsuarioDetails = `${process.env.REACT_APP_AUTH_SERVER}/api/auth/permisos`;
 
 export const urlPasswordReset = `${process.env.REACT_APP_AUTH_SERVER}/api/auth/reset`;
+
+// regiones
+
+export const urlGridRegiones = `${process.env.REACT_APP_BACK_END}/api/regiones`;

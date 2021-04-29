@@ -44,7 +44,6 @@ function Usuario() {
     { tittle: "Acción", atributo: "cedula" },
     { tittle: "Cedula", atributo: "cedula" },
     { tittle: "Nombre", atributo: "nombre" },
-    { tittle: "Dirección", atributo: "direccion" },
   ];
 
   const handleChangePage = (page) => setPage(page + 1);
@@ -155,9 +154,7 @@ function Usuario() {
                     }
                   />
                 </TableCell>
-                <TableCell align="left">{`${row.nombre.split(" ")[0]} ${
-                  row.apellido.split(" ")[0]
-                }`}</TableCell>
+                <TableCell align="left">{`${row.nombre} ${row.apellido}`}</TableCell>
                 <TableCell align="left">{row.permiso}</TableCell>
               </TableRow>
             ))}
@@ -204,10 +201,7 @@ function Usuario() {
                   />
                 </TableCell>
                 <TableCell align="left">{row.cedula}</TableCell>
-                <TableCell align="left">{`${row.nombre.split(" ")[0]} ${
-                  row.apellido.split(" ")[0]
-                }`}</TableCell>
-                <TableCell align="left">{row.direccion}</TableCell>
+                <TableCell align="left">{`${row.nombre} ${row.apellido}`}</TableCell>
               </TableRow>
             ))}
           </Grid>
